@@ -1,2 +1,2 @@
 # market-pattern-notebooks
-このツールはkojinnno 
+このツールは個人のトレード記録・学習用です。投資判断はご自身の責任で行ってください。
