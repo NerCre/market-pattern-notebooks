@@ -1,0 +1,318 @@
+/*
+  EdgeScope App Stylesheet
+  Dark-themed responsive layout for trade journal and analysis
+*/
+
+:root {
+  --bg-main: #0b0f15;
+  --bg-alt: #151a20;
+  --border-color: #252c38;
+  --text-main: #e4e9f0;
+  --text-sub: #9aa4b5;
+  --accent: #00ffc8;
+  --danger: #ff4d4f;
+  --success: #00d97e;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.app-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.2;
+  text-align: center;
+}
+.app-subtitle {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin-top: 4px;
+  color: var(--text-sub);
+}
+@media (max-width: 480px) {
+  .app-title {
+    font-size: 1.4rem;
+  }
+  .app-subtitle {
+    font-size: 0.8rem;
+  }
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+.tab-button {
+  flex: 1;
+  padding: 12px;
+  background-color: transparent;
+  color: var(--text-main);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.3s;
+}
+.tab-button:hover {
+  background-color: var(--bg-alt);
+}
+.tab-button.active {
+  border-bottom-color: var(--accent);
+  color: var(--accent);
+}
+
+.tab-content {
+  display: none;
+  padding-bottom: 32px;
+}
+.tab-content.active {
+  display: block;
+}
+
+.tab-heading {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Card styles */
+.card {
+  background-color: var(--bg-alt);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Form elements */
+.form-group {
+  margin-bottom: 12px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+  color: var(--text-sub);
+}
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="datetime-local"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+.form-group textarea {
+  resize: vertical;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+/* Buttons */
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--accent);
+  color: #000;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+button:hover {
+  background-color: #33ffd9;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Button rows */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+.button-row button {
+  flex: 1;
+}
+
+/* Entry & Result grids */
+.entry-grid,
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.result-grid {
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 960px) {
+  .entry-grid {
+    grid-template-columns: 1fr;
+  }
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Image preview */
+.image-preview img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+/* Judge result styling */
+.judge-result {
+  margin-top: 16px;
+  display: none;
+  text-align: left;
+}
+.judge-result .recommendation-badge {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #000;
+}
+.judge-result .expected-move,
+.judge-result .judge-reason {
+  margin-bottom: 8px;
+}
+.confidence-bar {
+  position: relative;
+  background-color: var(--border-color);
+  border-radius: 6px;
+  height: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.confidence-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--accent);
+  width: 0;
+}
+
+/* Result List */
+#resultSelect {
+  height: 200px;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+/* Table styles */
+.table-responsive {
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+thead {
+  background-color: var(--bg-alt);
+}
+thead th {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-sub);
+}
+tbody tr {
+  border-bottom: 1px solid var(--border-color);
+}
+tbody tr:hover {
+  background-color: #10151d;
+}
+tbody td {
+  padding: 8px;
+  color: var(--text-main);
+  vertical-align: top;
+}
+tbody td button {
+  margin-right: 4px;
+  margin-bottom: 4px;
+  font-size: 0.75rem;
+  padding: 6px 10px;
+}
+
+/* Charts column */
+.charts-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+@media (min-width: 960px) {
+  .charts-column .chart-card {
+    min-height: 250px;
+  }
+}
+
+/* Import button styling */
+.import-label {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: var(--accent);
+  color: #000;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+.import-label:hover {
+  background-color: #33ffd9;
+}
+.analysis-actions .import-label input {
+  display: none;
+}
+
+/* Footer */
+.app-disclaimer {
+  margin-top: 24px;
+  padding: 12px 16px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: #768197;
+  border-top: 1px solid var(--border-color);
+}
