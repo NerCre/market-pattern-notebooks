@@ -1,0 +1,288 @@
+/*
+ * Dark theme styling for the trade judging and note app.
+ * This stylesheet focuses on creating a modern, clean interface using dark colors,
+ * rounded controls and subtle shadows. Responsive design adjustments ensure
+ * that layouts collapse gracefully on small screens.
+ */
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #05070a;
+  color: #e4e9f0;
+  line-height: 1.5;
+}
+
+.app-title {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+/* Container for each tab content */
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+/* Tabs navigation */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.tab-button {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #1f2630;
+  color: #e4e9f0;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.tab-button:hover {
+  background: #273040;
+}
+
+.tab-button.active {
+  background: #00ffc8;
+  color: #05070a;
+}
+
+/* Tab content shows/hides based on active class */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Card component */
+.card {
+  background-color: #151a20;
+  border-radius: 12px;
+  padding: 16px 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+  margin-bottom: 12px;
+}
+
+.card-title {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: #e4e9f0;
+}
+
+/* Generic form group styling */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  color: #9aa4b5;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background-color: #11161d;
+  border-radius: 6px;
+  border: 1px solid #252c38;
+  padding: 6px 8px;
+  color: #e4e9f0;
+  font-size: 0.9rem;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #00ffc8;
+}
+
+/* Button row for grouping buttons horizontally */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-primary {
+  background: #00ffc8;
+  color: #05070a;
+}
+
+.btn-primary:hover {
+  background: #06e6b4;
+}
+
+.btn-secondary {
+  background: #1f2630;
+  color: #e4e9f0;
+}
+
+.btn-secondary:hover {
+  background: #273040;
+}
+
+/* Entry page specific styles */
+.entry-section-title {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.entry-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1.2fr 0.9fr;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.entry-actions {
+  margin-top: 18px;
+}
+
+.judge-result {
+  margin-top: 14px;
+}
+
+@media (max-width: 960px) {
+  .entry-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Result page specific styles */
+.result-section-title {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1.5fr;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+@media (max-width: 960px) {
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Profit display styling */
+.profit-display {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #00ffc8;
+}
+
+/* Analysis page specific styles */
+.analysis-section-title {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.filter-row .form-group {
+  min-width: 140px;
+}
+
+.trade-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.trade-table th,
+.trade-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #252c38;
+}
+
+.trade-table th {
+  text-align: left;
+  color: #9aa4b5;
+}
+
+.trade-table tr:hover {
+  background-color: #1f2630;
+}
+
+.entry-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.entry-list li {
+  padding: 6px 8px;
+  border-bottom: 1px solid #252c38;
+  cursor: pointer;
+}
+
+.entry-list li:hover {
+  background-color: #1f2630;
+}
+
+.entry-list li.active {
+  background-color: #273040;
+}
+
+.charts-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.export-import-row {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Additional responsive tweaks */
+@media (max-width: 600px) {
+  .tabs {
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .filter-row {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
