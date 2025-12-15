@@ -1,0 +1,2 @@
+# market-pattern-notebooks
+このツールはkojinnno 
