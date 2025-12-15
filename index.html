@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>トレード判定・ノートアプリ</title>
+  <!-- ダークテーマ用スタイル -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Chart.js v4.5.0 from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <h1 class="app-title">トレード判定・ノートアプリ</h1>
+
+    <!-- タブボタン -->
+    <div class="tabs">
+      <button class="tab-button active" data-tab="entry">📥 エントリー入力</button>
+      <button class="tab-button" data-tab="result">✅ 結果入力</button>
+      <button class="tab-button" data-tab="analysis">📊 一覧・分析</button>
+    </div>
+
+    <!-- エントリー入力タブ -->
+    <section id="tab-entry" class="tab-content active">
+      <h2 class="entry-section-title">エントリー情報</h2>
+      <div class="entry-grid">
+        <!-- 基本情報カード -->
+        <div class="entry-basic card">
+          <h3>基本情報</h3>
+          <label>日時
+            <input type="datetime-local" id="entry-datetime">
+          </label>
+          <label>銘柄
+            <input type="text" id="entry-symbol" value="nk225mc">
+          </label>
+          <label>時間足
+            <select id="entry-timeframe">
+              <option value="1分">1分</option>
+              <option value="5分">5分</option>
+              <option value="15分">15分</option>
+              <option value="30分">30分</option>
+              <option value="1時間">1時間</option>
+              <option value="日足">日足</option>
+            </select>
+          </label>
+          <label>取引区分
+            <select id="entry-tradeType">
+              <option value="real">リアル</option>
+              <option value="virtual">バーチャル</option>
+              <option value="practice">プラクティス</option>
+            </select>
+          </label>
+          <label>想定方向
+            <select id="entry-directionPlanned">
+              <option value="long">ロング</option>
+              <option value="short">ショート</option>
+              <option value="flat">ノーポジ</option>
+            </select>
+          </label>
+          <label>エントリー価格
+            <input type="number" id="entry-price" step="0.01">
+          </label>
+          <label>枚数
+            <input type="number" id="entry-size" step="1">
+          </label>
+          <label>1枚あたりの手数料
+            <input type="number" id="entry-feePerUnit" step="0.01">
+          </label>
+          <label>想定ストップ価格
+            <input type="number" id="entry-plannedStopPrice" step="0.01">
+          </label>
+          <label>指値価格
+            <input type="number" id="entry-plannedLimitPrice" step="0.01">
+          </label>
+          <label>ロスカット価格
+            <input type="number" id="entry-cutLossPrice" step="0.01">
+          </label>
+          <label>実際に取った方法
+            <input type="text" id="entry-methodTag">
+          </label>
+        </div>
+        <!-- インジケーターカード -->
+        <div class="entry-indicators card">
+          <h3>インジケーター</h3>
+          <label>EMA5/20/40トレンド
+            <select id="entry-trend_5_20_40">
+              <option value="bull">上昇（bull）</option>
+              <option value="bear">下降（bear）</option>
+              <option value="mixed">その他（mixed）</option>
+            </select>
+          </label>
+          <label>価格 vs EMA200
+            <select id="entry-price_vs_ema200">
+              <option value="above">価格はEMA200より上</option>
+              <option value="below">価格はEMA200より下</option>
+            </select>
+          </label>
+          <label>EMAバンド
+            <select id="entry-ema_band_color">
+              <option value="dark_green">濃緑（強い上昇）</option>
+              <option value="light_green">薄緑（上昇気味）</option>
+              <option value="neutral">0付近（中立）</option>
+              <option value="light_red">薄赤（下落気味）</option>
+              <option value="dark_red">濃赤（強い下落）</option>
+            </select>
+          </label>
+          <label>Pivot×ATRゾーン
+            <select id="entry-zone">
+              <option value="pivot">pivot</option>
+              <option value="pivot_R1">pivot〜R1</option>
+              <option value="R1">R1</option>
+              <option value="R1_R2">R1〜R2</option>
+              <option value="R2">R2</option>
+              <option value="R2_HBOP">R2〜HBOP</option>
+              <option value="HBOP">HBOP</option>
+              <option value="over_HBOP">HBOP以上</option>
+              <option value="pivot_S1">pivot〜S1</option>
+              <option value="S1">S1</option>
+              <option value="S1_S2">S1〜S2</option>
+              <option value="S2">S2</option>
+              <option value="S2_LBOP">S2〜LBOP</option>
+              <option value="LBOP">LBOP</option>
+              <option value="under_LBOP">LBOP以下</option>
+            </select>
+          </label>
+          <label>CMF圏域
+            <select id="entry-cmf_sign">
+              <option value="positive">プラス圏</option>
+              <option value="near_zero">ゼロ付近</option>
+              <option value="negative">マイナス圏</option>
+            </select>
+          </label>
+          <label>CMF SMA方向
+            <select id="entry-cmf_sma_dir">
+              <option value="up">上昇</option>
+              <option value="down">下降</option>
+              <option value="flat">横ばい</option>
+            </select>
+          </label>
+          <label>ROC圏域
+            <select id="entry-roc_sign">
+              <option value="positive">プラス圏</option>
+              <option value="near_zero">ゼロ付近</option>
+              <option value="negative">マイナス圏</option>
+            </select>
+          </label>
+          <label>ROC SMA方向
+            <select id="entry-roc_sma_dir">
+              <option value="up">上昇</option>
+              <option value="down">下降</option>
+              <option value="flat">横ばい</option>
+            </select>
+          </label>
+          <label>MACD状態
+            <select id="entry-macd_state">
+              <option value="post_gc">GC後</option>
+              <option value="post_dc">DC後</option>
+              <option value="neutral">その他</option>
+            </select>
+          </label>
+          <label>RSIゾーン
+            <select id="entry-rsi_zone">
+              <option value="under30">0〜30</option>
+              <option value="30to50">30〜50</option>
+              <option value="50to70">50〜70</option>
+              <option value="over70">70以上</option>
+            </select>
+          </label>
+        </div>
+        <!-- メモ・画像・音声カード -->
+        <div class="entry-memo card">
+          <h3>メモ・添付</h3>
+          <label>相場状況メモ
+            <textarea id="entry-marketMemo" rows="4"></textarea>
+          </label>
+          <label>画像添付
+            <input type="file" id="entry-imageData" accept="image/*">
+          </label>
+          <label>Notion URL
+            <input type="url" id="entry-notionUrl">
+          </label>
+          <div class="voice-controls">
+            <button type="button" id="entry-voiceBtn">🎤 音声入力</button>
+            <span id="voice-status" class="voice-status"></span>
+          </div>
+        </div>
+      </div>
+      <!-- ボタン行 -->
+      <div class="entry-actions button-row">
+        <button type="button" id="entry-judgeBtn">判定する</button>
+        <button type="button" id="entry-saveBtn">判定してエントリーを保存</button>
+      </div>
+      <!-- 判定結果表示 -->
+      <div class="judge-result card" id="judge-result" style="display:none;"></div>
+    </section>
+
+    <!-- 結果入力タブ -->
+    <section id="tab-result" class="tab-content">
+      <h2 class="result-section-title">結果入力</h2>
+      <div class="result-grid">
+        <!-- エントリー選択カード -->
+        <div class="result-list card">
+          <h3>エントリー選択</h3>
+          <select id="result-select">
+            <!-- オプションはスクリプトで動的に生成 -->
+          </select>
+          <p id="result-select-message" class="small-text"></p>
+        </div>
+        <!-- 結果入力フォームカード -->
+        <div class="result-form card">
+          <h3>結果情報</h3>
+          <label>決済日時
+            <input type="datetime-local" id="result-datetimeExit">
+          </label>
+          <label>決済価格
+            <input type="number" id="result-exitPrice" step="0.01">
+          </label>
+          <label>取った方向
+            <select id="result-directionTaken">
+              <option value="long">ロング</option>
+              <option value="short">ショート</option>
+              <option value="flat">ノーポジ</option>
+            </select>
+          </label>
+          <label>枚数
+            <input type="number" id="result-size" step="1">
+          </label>
+          <label>1枚あたりの手数料
+            <input type="number" id="result-feePerUnit" step="0.01">
+          </label>
+          <label>トレード中の最高値
+            <input type="number" id="result-highDuringTrade" step="0.01">
+          </label>
+          <label>トレード中の最安値
+            <input type="number" id="result-lowDuringTrade" step="0.01">
+          </label>
+          <label>メモ
+            <textarea id="result-resultMemo" rows="3"></textarea>
+          </label>
+          <div class="profit-display">損益: <span id="result-profit">0</span></div>
+        </div>
+      </div>
+      <div class="result-actions button-row">
+        <button type="button" id="result-saveBtn">結果を保存</button>
+      </div>
+    </section>
+
+    <!-- 一覧・分析タブ -->
+    <section id="tab-analysis" class="tab-content">
+      <!-- フィルタ＆一覧カード -->
+      <div class="analysis-filters card">
+        <h3>フィルタ</h3>
+        <div class="filters-grid">
+          <div class="filter-item">
+            <label>銘柄
+              <input type="text" id="filter-symbol" placeholder="例: nk225mc">
+            </label>
+          </div>
+          <div class="filter-item">
+            <label>取引区分
+              <select id="filter-tradeType">
+                <option value="">すべて</option>
+                <option value="real">リアル</option>
+                <option value="virtual">バーチャル</option>
+                <option value="practice">プラクティス</option>
+              </select>
+            </label>
+          </div>
+          <div class="filter-item">
+            <label>方向
+              <select id="filter-direction">
+                <option value="">すべて</option>
+                <option value="long">ロング</option>
+                <option value="short">ショート</option>
+                <option value="flat">ノーポジ</option>
+              </select>
+            </label>
+          </div>
+          <div class="filter-item">
+            <label>開始日
+              <input type="date" id="filter-startDate">
+            </label>
+          </div>
+          <div class="filter-item">
+            <label>終了日
+              <input type="date" id="filter-endDate">
+            </label>
+          </div>
+        </div>
+        <div class="filter-buttons">
+          <button type="button" id="filter-applyBtn">フィルタ適用</button>
+          <button type="button" id="filter-resetBtn">フィルタリセット</button>
+        </div>
+      </div>
+      <div class="analysis-table card">
+        <h3>トレード一覧</h3>
+        <table class="trade-table" id="analysis-table">
+          <thead>
+            <tr>
+              <th>エントリー日時</th>
+              <th>銘柄</th>
+              <th>時間足</th>
+              <th>取引区分</th>
+              <th>結果方向</th>
+              <th>損益</th>
+              <th>推奨</th>
+              <th>完了</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- テーブル内容はスクリプトで生成 -->
+          </tbody>
+        </table>
+      </div>
+      <!-- グラフ列 -->
+      <div class="charts-column">
+        <div class="chart-card card">
+          <h3>累積損益</h3>
+          <canvas id="chart-cumulativeProfit" height="250"></canvas>
+        </div>
+        <div class="chart-card card">
+          <h3>方向別 勝率＆平均損益</h3>
+          <canvas id="chart-directionStats" height="250"></canvas>
+        </div>
+        <div class="chart-card card">
+          <h3>時間足別 勝率</h3>
+          <canvas id="chart-timeframeStats" height="250"></canvas>
+        </div>
+      </div>
+      <!-- JSONエクスポート／インポートボタン行 -->
+      <div class="json-actions button-row">
+        <button type="button" id="json-exportBtn">JSONエクスポート</button>
+        <button type="button" id="json-importBtn">JSONインポート</button>
+        <input type="file" id="json-importInput" accept="application/json" style="display:none">
+      </div>
+    </section>
+  </div>
+
+  <!-- メインスクリプト -->
+  <script src="script.js"></script>
+</body>
+</html>
