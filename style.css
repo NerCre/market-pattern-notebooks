@@ -1,0 +1,224 @@
+/* Dark theme styles for EdgeScope */
+:root {
+  --bg-main: #0b0f15;
+  --bg-secondary: #151a20;
+  --border: #252c38;
+  --text-main: #e4e9f0;
+  --text-sub: #9aa4b5;
+  --accent: #00ffc8;
+  --error: #ff6b6b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.app-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.app-subtitle {
+  display: block;
+  font-size: 0.6em;
+  color: var(--text-sub);
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  background: var(--bg-secondary);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  padding: 10px 16px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: background 0.2s;
+}
+
+.tab-button.active,
+.tab-button:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+
+/* Cards */
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.entry-container, .exit-container, .stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.entry-container .card {
+  flex: 1 1 300px;
+  min-width: 260px;
+}
+.exit-container .card {
+  flex: 1 1 40%;
+}
+.stats-container .card {
+  flex: 1 1 100%;
+}
+
+.form-field {
+  margin-bottom: 10px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text-sub);
+  font-size: 0.9em;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-family: inherit;
+}
+
+.form-field input.input-error,
+.form-field select.input-error,
+.form-field textarea.input-error {
+  border-color: var(--error);
+}
+
+.form-field .display-field {
+  padding: 8px;
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-main);
+}
+
+.required {
+  color: var(--accent);
+}
+
+.entry-actions button,
+.exit-actions button,
+.filter-actions button {
+  background: var(--accent);
+  color: #000;
+  border: none;
+  padding: 10px 14px;
+  margin-right: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Import label styled as button */
+.import-label {
+  background: var(--accent);
+  color: #000;
+  padding: 10px 14px;
+  margin-left: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  display: inline-block;
+}
+.import-label:hover {
+  opacity: 0.8;
+}
+
+.entry-actions button:hover,
+.exit-actions button:hover,
+.filter-actions button:hover {
+  opacity: 0.8;
+}
+
+.error-message {
+  color: var(--error);
+  margin-top: 10px;
+}
+
+.result-card {
+  border-color: var(--accent);
+  display: none;
+}
+
+.result-card h3 {
+  margin-top: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+table th, table td {
+  border: 1px solid var(--border);
+  padding: 6px;
+  text-align: left;
+  font-size: 0.9em;
+}
+table th {
+  background: var(--bg-secondary);
+  color: var(--text-main);
+}
+table tr:nth-child(even) td {
+  background: #10141b;
+}
+table tr:nth-child(odd) td {
+  background: var(--bg-secondary);
+}
+
+.display-field {
+  min-height: 36px;
+  line-height: 36px;
+}
+
+@media (max-width: 768px) {
+  .entry-container, .exit-container {
+    flex-direction: column;
+  }
+  .exit-container .card {
+    flex: 1 1 100%;
+  }
+  .tab-button {
+    flex: 1 1 auto;
+  }
+}
