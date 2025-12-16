@@ -1,0 +1,371 @@
+/* Base styles for dark themed SPA */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+    background-color: #0b0f15;
+    color: #e4e9f0;
+    line-height: 1.6;
+    height: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.app {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+/* Header */
+.app-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.app-subtitle {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-top: 4px;
+    color: #9aa4b5;
+}
+
+@media (max-width: 480px) {
+    .app-title {
+        font-size: 1.4rem;
+    }
+    .app-subtitle {
+        font-size: 0.8rem;
+    }
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 8px 16px;
+    background: transparent;
+    color: #9aa4b5;
+    border: 1px solid #252c38;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.tab-button:not(.active):hover {
+    background-color: #151a20;
+}
+
+.tab-button.active {
+    background-color: #151a20;
+    color: #00ffc8;
+    border-color: #00ffc8;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Cards */
+.card {
+    background-color: #151a20;
+    border: 1px solid #252c38;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Form groups */
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 4px;
+    color: #c4cbd6;
+    font-size: 0.85rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="datetime-local"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #252c38;
+    background-color: #0b0f15;
+    color: #e4e9f0;
+    font-size: 0.9rem;
+    resize: vertical;
+}
+
+.form-group input[type="file"] {
+    border: none;
+    color: #c4cbd6;
+    font-size: 0.9rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #00ffc8;
+    box-shadow: 0 0 0 2px rgba(0, 255, 200, 0.3);
+}
+
+/* Entry grid layout */
+.entry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+/* Button row */
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+button {
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background-color: #00ffc8;
+    color: #05070a;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #0fffd8;
+}
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #00ffc8;
+    border: 1px solid #00ffc8;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: #00ffc8;
+    color: #05070a;
+}
+
+.btn-small {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    background-color: #252c38;
+    color: #9aa4b5;
+    border: 1px solid #3a4453;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-small:hover {
+    background-color: #303a4a;
+}
+
+.recording-status {
+    font-size: 0.8rem;
+    margin-left: 8px;
+    color: #00ffc8;
+}
+
+/* Preview image */
+.preview-image {
+    display: none;
+    width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    margin-top: 8px;
+    border-radius: 8px;
+    border: 1px solid #252c38;
+}
+
+/* Judge result card */
+.judge-result {
+    margin-top: 16px;
+    display: none;
+}
+.judge-result h4 {
+    margin-top: 0;
+}
+
+/* Judge result rows */
+.judge-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.judge-label {
+    color: #9aa4b5;
+    margin-right: 8px;
+}
+
+.judge-value {
+    font-weight: 600;
+}
+
+.confidence-bar {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    background-color: #252c38;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-left: 12px;
+    flex-grow: 1;
+}
+
+.confidence-bar-inner {
+    height: 100%;
+    background-color: #00ffc8;
+    width: 0%;
+}
+
+/* Exit tab layout */
+.exit-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+}
+
+.exit-record-summary {
+    font-size: 0.85rem;
+    margin-top: 8px;
+    color: #9aa4b5;
+}
+
+/* Stats summary */
+.stats-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.stats-summary .stat-item {
+    flex: 1 1 200px;
+    padding: 8px;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #e4e9f0;
+    font-size: 0.85rem;
+}
+
+th, td {
+    padding: 8px;
+    border-bottom: 1px solid #252c38;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: #151a20;
+    font-weight: 600;
+}
+
+tr:nth-child(even) td {
+    background-color: #0f141b;
+}
+
+tr:hover td {
+    background-color: #1a212b;
+}
+
+/* File input label */
+.file-input-label {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #00ffc8;
+    border-radius: 8px;
+    color: #00ffc8;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    user-select: none;
+}
+
+.file-input-label:hover {
+    background-color: #00ffc8;
+    color: #05070a;
+}
+
+/* Disclaimer */
+.app-disclaimer {
+    margin-top: 24px;
+    padding: 12px 16px;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: #768197;
+    border-top: 1px solid #252c38;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .entry-grid {
+        grid-template-columns: 1fr;
+    }
+    .exit-content {
+        grid-template-columns: 1fr;
+    }
+    .button-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .btn-primary, .btn-secondary {
+        width: 100%;
+    }
+    .file-input-label {
+        width: 100%;
+        text-align: center;
+    }
+}
