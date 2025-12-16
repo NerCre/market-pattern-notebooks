@@ -1,0 +1,265 @@
+/* Reset some defaults */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: #05070a;
+  color: #e4e9f0;
+  line-height: 1.4;
+}
+a {
+  color: #00ffc8;
+}
+
+/* Container for the app */
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Title styling */
+.app-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.2;
+  text-align: center;
+}
+.app-subtitle {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin-top: 4px;
+  color: #9aa4b5;
+}
+
+@media (max-width: 480px) {
+  .app-title {
+    font-size: 1.4rem;
+  }
+  .app-subtitle {
+    font-size: 0.8rem;
+  }
+}
+
+/* Tab buttons */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.tab-button {
+  flex: 1;
+  padding: 8px 12px;
+  background: #151a20;
+  color: #e4e9f0;
+  border: 1px solid #252c38;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s, color 0.2s;
+}
+.tab-button:hover {
+  background: #1e242e;
+}
+.tab-button.active {
+  background: #00ffc8;
+  color: #05070a;
+  border-color: #00ffc8;
+}
+
+/* Tabs content */
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+
+/* Cards */
+.card {
+  background: #151a20;
+  border: 1px solid #252c38;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Form groups */
+.form-group {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+  color: #9aa4b5;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 6px 10px;
+  border: 1px solid #252c38;
+  border-radius: 6px;
+  background: #0b0f15;
+  color: #e4e9f0;
+  font-size: 0.9rem;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #00ffc8;
+  box-shadow: 0 0 0 1px #00ffc8;
+}
+.form-group textarea {
+  resize: vertical;
+}
+.readonly-field span {
+  display: block;
+  padding: 6px 10px;
+  background: #0b0f15;
+  border: 1px solid #252c38;
+  border-radius: 6px;
+  color: #e4e9f0;
+}
+
+/* Grids */
+.entry-grid,
+.result-grid,
+.filter-grid {
+  display: grid;
+  gap: 16px;
+}
+.entry-grid {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.result-grid {
+  grid-template-columns: 1fr 1fr;
+}
+.filter-grid {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+@media (max-width: 768px) {
+  .entry-grid {
+    grid-template-columns: 1fr;
+  }
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Buttons */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 16px 0;
+}
+.primary-button,
+.secondary-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.primary-button {
+  background: #00ffc8;
+  color: #05070a;
+}
+.primary-button:hover {
+  background: #2bffd7;
+}
+.secondary-button {
+  background: #252c38;
+  color: #e4e9f0;
+  border: 1px solid #252c38;
+}
+.secondary-button:hover {
+  background: #1e242e;
+}
+
+/* Table styling */
+.table-container {
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+th,
+td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #252c38;
+  text-align: left;
+  font-size: 0.85rem;
+}
+th {
+  background: #1e242e;
+  color: #e4e9f0;
+  font-weight: 600;
+}
+tr:nth-child(even) td {
+  background: #0b0f15;
+}
+tr:hover td {
+  background: #1e242e;
+}
+.table-actions button {
+  margin-right: 4px;
+}
+
+/* Charts section */
+.charts-column {
+  display: grid;
+  gap: 16px;
+  margin-top: 16px;
+}
+.chart-card {
+  padding: 16px;
+}
+.chart-card canvas {
+  width: 100% !important;
+  height: 300px !important;
+}
+
+/* Disclaimer */
+.app-disclaimer {
+  margin-top: 24px;
+  padding: 12px 16px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: #768197;
+  border-top: 1px solid #252c38;
+}
+
+/* Confidence bar */
+.confidence-bar {
+  position: relative;
+  height: 10px;
+  background: #252c38;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+.confidence-bar > div {
+  height: 100%;
+  background: #00ffc8;
+}
+
+/* Voice status */
+.voice-status {
+  font-size: 0.75rem;
+  color: #00ffc8;
+  margin-left: 8px;
+}
