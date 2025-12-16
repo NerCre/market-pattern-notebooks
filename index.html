@@ -106,6 +106,7 @@
           <div class="form-group">
             <label for="prevWave">直前の波</label>
             <select id="prevWave">
+              <option value="">選択してください</option>
               <option value="HH">HH</option>
               <option value="HL">HL</option>
               <option value="LL">LL</option>
@@ -115,6 +116,7 @@
           <div class="form-group">
             <label for="trend_5_20_40">EMA5/20/40トレンド</label>
             <select id="trend_5_20_40">
+              <option value="">選択してください</option>
               <option value="Stage1">Stage1</option>
               <option value="Stage2">Stage2</option>
               <option value="Stage3">Stage3</option>
@@ -126,90 +128,99 @@
           <div class="form-group">
             <label for="price_vs_ema200">価格 vs EMA200</label>
             <select id="price_vs_ema200">
-              <option value="above">above</option>
-              <option value="below">below</option>
+              <option value="">選択してください</option>
+              <option value="above">EMA200より上</option>
+              <option value="below">EMA200より下</option>
             </select>
           </div>
           <div class="form-group">
             <label for="ema_band_color">EMA Band</label>
             <select id="ema_band_color">
-              <option value="dark_green">dark_green</option>
-              <option value="light_green">light_green</option>
-              <option value="neutral">neutral</option>
-              <option value="light_red">light_red</option>
-              <option value="dark_red">dark_red</option>
+              <option value="">選択してください</option>
+              <option value="dark_green">濃緑（強い上昇）</option>
+              <option value="light_green">薄緑（上昇気味）</option>
+              <option value="neutral">中立</option>
+              <option value="light_red">薄赤（下落気味）</option>
+              <option value="dark_red">濃赤（強い下落）</option>
             </select>
           </div>
           <div class="form-group">
             <label for="zone">Pivot×ATRゾーン</label>
             <select id="zone">
+              <option value="">選択してください</option>
               <option value="pivot">pivot</option>
-              <option value="pivot_R1">pivot_R1</option>
+              <option value="pivot_R1">pivot～R1</option>
               <option value="R1">R1</option>
-              <option value="R1_R2">R1_R2</option>
+              <option value="R1_R2">R1～R2</option>
               <option value="R2">R2</option>
-              <option value="R2_HBOP">R2_HBOP</option>
+              <option value="R2_HBOP">R2～HBOP</option>
               <option value="HBOP">HBOP</option>
-              <option value="over_HBOP">over_HBOP</option>
-              <option value="pivot_S1">pivot_S1</option>
+              <option value="over_HBOP">HBOP以上</option>
+              <option value="pivot_S1">pivot～S1</option>
               <option value="S1">S1</option>
-              <option value="S1_S2">S1_S2</option>
+              <option value="S1_S2">S1～S2</option>
               <option value="S2">S2</option>
-              <option value="S2_LBOP">S2_LBOP</option>
+              <option value="S2_LBOP">S2～LBOP</option>
               <option value="LBOP">LBOP</option>
-              <option value="under_LBOP">under_LBOP</option>
+              <option value="under_LBOP">LBOP以下</option>
             </select>
           </div>
           <div class="form-group">
             <label for="cmf_sign">CMF圏域</label>
             <select id="cmf_sign">
-              <option value="positive">positive</option>
-              <option value="near_zero">near_zero</option>
-              <option value="negative">negative</option>
+              <option value="">選択してください</option>
+              <option value="positive">プラス圏</option>
+              <option value="near_zero">ゼロ付近</option>
+              <option value="negative">マイナス圏</option>
             </select>
           </div>
           <div class="form-group">
             <label for="cmf_sma_dir">CMF SMA方向</label>
             <select id="cmf_sma_dir">
-              <option value="gc">gc</option>
-              <option value="up">up</option>
-              <option value="flat">flat</option>
-              <option value="down">down</option>
-              <option value="dc">dc</option>
+              <option value="">選択してください</option>
+              <option value="gc">GoldCross</option>
+              <option value="up">上昇</option>
+              <option value="flat">横ばい</option>
+              <option value="down">下降</option>
+              <option value="dc">DeadCross</option>
             </select>
           </div>
           <div class="form-group">
             <label for="macd_state">MACD状態</label>
             <select id="macd_state">
-              <option value="post_gc">post_gc</option>
-              <option value="post_dc">post_dc</option>
-              <option value="neutral">neutral</option>
+              <option value="">選択してください</option>
+              <option value="post_gc">GoldCross後</option>
+              <option value="neutral">中立</option>
+              <option value="post_dc">DeadCross後</option>
             </select>
           </div>
           <div class="form-group">
             <label for="roc_sign">ROC圏域</label>
             <select id="roc_sign">
-              <option value="positive">positive</option>
-              <option value="near_zero">near_zero</option>
-              <option value="negative">negative</option>
+              <option value="">選択してください</option>
+              <option value="positive">プラス圏</option>
+              <option value="near_zero">ゼロ付近</option>
+              <option value="negative">マイナス圏</option>
             </select>
           </div>
           <div class="form-group">
             <label for="roc_sma_dir">ROC SMA方向</label>
             <select id="roc_sma_dir">
-              <option value="up">up</option>
-              <option value="flat">flat</option>
-              <option value="down">down</option>
+              <option value="">選択してください</option>
+              <option value="up">上昇</option>
+              <option value="flat">横ばい</option>
+              <option value="down">下降</option>
             </select>
           </div>
           <div class="form-group">
             <label for="rsi_zone">RSIゾーン</label>
             <select id="rsi_zone">
-              <option value="over70">over70</option>
-              <option value="50to70">50to70</option>
-              <option value="around50">around50</option>
-              <option value="30to50">30to50</option>
-              <option value="under30">under30</option>
+              <option value="">選択してください</option>
+              <option value="over70">70以上</option>
+              <option value="50to70">50〜70</option>
+              <option value="around50">50付近</option>
+              <option value="30to50">30〜50</option>
+              <option value="under30">30以下</option>
             </select>
           </div>
         </div>
