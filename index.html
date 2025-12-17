@@ -65,9 +65,9 @@
           <div class="form-field">
             <label for="tradeType">種別</label>
             <select id="tradeType">
-              <option value="real">real</option>
-              <option value="virtual">virtual</option>
-              <option value="practice">practice</option>
+              <option value="real">リアル</option>
+              <option value="virtual">バーチャル</option>
+              <option value="practice">プラクティス</option>
             </select>
           </div>
           <div class="form-field">
@@ -217,9 +217,10 @@
               <option value="0〜30">0〜30</option>
             </select>
           </div>
+          <h3>判定設定</h3>
           <div class="form-field">
-            <label for="minWinRate">勝率しきい値 (%)</label>
-            <input id="minWinRate" type="number" value="30" inputmode="decimal">
+            <label for="minWinRate">最低勝率 (%)</label>
+            <input type="number" id="entry-minWinRate" inputmode="decimal" value="30" min="0" max="100">
           </div>
         </div>
         <!-- Right: Memo & Image -->
@@ -239,14 +240,30 @@
           </div>
         </div>
       </div>
-      <!-- Buttons & Result Card -->
-      <div class="entry-actions">
-        <button id="btnJudge">判定する</button>
-        <button id="btnJudgeAndSave">判定してエントリーを保存</button>
-        <button id="btnClearEntry">このエントリー入力をクリア</button>
+      <!-- Buttons row -->
+      <div class="button-row">
+        <button type="button" id="btn-analyze">判定する</button>
+        <button type="button" id="btn-analyze-save">判定してエントリーを保存</button>
+        <button type="button" id="btn-entry-clear">このエントリー入力をクリア</button>
       </div>
-      <div id="entryError" class="error-message"></div>
-      <div id="judgeResult" class="card result-card" style="display:none"></div>
+      <!-- Results card -->
+      <div id="analysis-result" class="analysis-result" hidden>
+        <h3>判定結果</h3>
+        <div class="analysis-grid">
+          <div><span class="label">判定銘柄:</span> <span id="res-symbol"></span></div>
+          <div><span class="label">疑似ケース件数:</span> <span id="res-caseCount"></span></div>
+          <div><span class="label">推奨方向:</span> <span id="res-recommendation"></span></div>
+          <div><span class="label">勝率:</span> <span id="res-winRate"></span></div>
+          <div><span class="label">信頼度:</span> <span id="res-confidence"></span></div>
+          <div><span class="label">推定値幅:</span> <span id="res-expectedMove"></span></div>
+          <div><span class="label">平均利益:</span> <span id="res-avgProfit"></span></div>
+          <div><span class="label">平均損失:</span> <span id="res-avgLoss"></span></div>
+          <!-- Confidence bar -->
+          <div class="confidence-bar-wrap">
+            <div class="confidence-bar" id="confidence-bar"></div>
+          </div>
+        </div>
+      </form>
     </section>
 
     <!-- Exit Tab Content -->
@@ -306,7 +323,7 @@
     <section id="tab-stats" class="tab-content">
       <div class="stats-container">
         <div class="card stats-filters">
-          <h2>フィルタ</h2>
+          <h3>フィルタ</h3>
           <div class="form-field">
             <label for="filterSymbol">銘柄</label>
             <select id="filterSymbol">
