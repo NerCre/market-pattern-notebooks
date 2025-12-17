@@ -4,29 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EdgeScope – Trade Judge &amp; Note</title>
+  <!-- Main stylesheet -->
   <link rel="stylesheet" href="style.css">
-  <!-- Chart.js via CDN (version pinned) -->
+  <!-- Chart.js for graphs -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
   <div class="app">
-    <h1 class="app-title">
-      EdgeScope
-      <span class="app-subtitle">Trade Judge &amp; Note</span>
-    </h1>
-
-    <div class="tabs">
+    <header class="app-header">
+        <!-- Title is split over two lines intentionally to avoid awkward wrapping on small screens -->
+        <h1 class="title-line1">EdgeScope</h1>
+        <h2 class="title-line2">Trade Judge &amp; Note</h2>
+    </header>
+    <nav class="tabs">
       <button class="tab-button active" data-tab="entry">📥 entry</button>
       <button class="tab-button" data-tab="exit">✅ exit</button>
       <button class="tab-button" data-tab="stats">📊 Stats</button>
-    </div>
-
+    </nav>
     <!-- Entry Tab Content -->
-    <section id="tab-entry" class="tab-content active">
-      <div class="entry-container">
-        <!-- Left: Entry information -->
-        <div class="card entry-info">
-          <h2>エントリー情報</h2>
+   <section id="entry-tab" class="tab-content active">
+      <form id="entry-form" class="form-section">
+        <!-- Error message placeholder -->
+        <div id="entry-error" class="error-message" aria-live="assertive"></div>
+        <div class="form-columns">
+          <!-- Column 1: basic trade info -->
+          <div class="form-column">
+          <h3>基本情報</h3>
           <div class="form-field">
             <label for="datetimeEntry">エントリー日時<span class="required">*</span></label>
             <input id="datetimeEntry" name="datetimeEntry" type="datetime-local" required>
@@ -81,7 +84,7 @@
             <input id="feePerUnit" name="feePerUnit" type="number" inputmode="decimal" required>
           </div>
           <div class="form-field">
-            <label for="plannedStopPrice">損切り予定</label>
+            <label for="plannedStopPrice">ストップ予想価格</label>
             <input id="plannedStopPrice" type="number" inputmode="decimal">
           </div>
           <div class="form-field">
@@ -89,7 +92,7 @@
             <input id="plannedLimitPrice" type="number" inputmode="decimal">
           </div>
           <div class="form-field">
-            <label for="cutLossPrice">撤退価格</label>
+            <label for="cutLossPrice">ロスカット価格</label>
             <input id="cutLossPrice" type="number" inputmode="decimal">
           </div>
         </div>
@@ -97,8 +100,10 @@
         <div class="card entry-indicators">
           <h2>インジケーター</h2>
           <div class="form-field">
-            <label for="prevWave">前波</label>
+            <label for="prevWave">波動</label>
             <select id="prevWave">
+              <option value="">選択してください</option>
+              <option value="Wave1">第1波</option>
               <option value="HH">HH</option>
               <option value="HL">HL</option>
               <option value="LL">LL</option>
