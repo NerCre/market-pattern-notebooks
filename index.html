@@ -284,53 +284,49 @@
           </label>
         </div>
         <!-- Exit details -->
-        
-
-        <div class="card exit-form">
-          <h2>結果入力</h2>
-          <div class="form-field">
-            <label for="datetimeExit">終了日時</label>
-            <input id="datetimeExit" type="datetime-local">
+        <div id="exit-details" class="exit-details" hidden>
+          <div class="form-columns">
+            <div class="form-column">
+              <h3>決済情報</h3>
+              <label>
+                決済日時
+                <input type="datetime-local" id="exit-datetime">
+              </label>
+              <label>
+                決済価格
+                <input type="number" inputmode="decimal" id="exit-price">
+              </label>
+              <label>
+                トレード中 最高値
+                <input type="number" inputmode="decimal" id="exit-high">
+              </label>
+              <label>
+                トレード中 最安値
+                <input type="number" inputmode="decimal" id="exit-low">
+              </label>
+              <label>
+                損益
+                <div id="exitProfitDisp"></div>
+              </label>
+              <label>
+                結果メモ
+                <textarea id="resultMemo" rows="3"></textarea>
+              </label>
+            </div>
+            <div class="form-column">
+              <h3>参考情報</h3>
+              <div><span class="label">取引方向:</span> <span id="exit-direction-display"></span></div>
+              <div><span class="label">エントリー価格:</span> <span id="exit-entryPrice-display"></span></div>
+              <div><span class="label">枚数:</span> <span id="exit-size-display"></span></div>
+              <div><span class="label">手数料/枚:</span> <span id="exit-fee-display"></span></div>
+            </div>
+            <div class="button-row">
+              <button type="button" id="btn-exit-save">決済保存</button>
+              <button type="button" id="btn-exit-clear">入力をクリア</button>
+            </div>
           </div>
-          <div class="form-field">
-            <label for="exitPrice">終了価格</label>
-            <input id="exitPrice" type="number" inputmode="decimal">
-          </div>
-          <div class="form-field">
-            <label>エントリー方向</label>
-            <div id="exitDirectionDisp" class="display-field"></div>
-          </div>
-          <div class="form-field">
-            <label>枚数</label>
-            <div id="exitSizeDisp" class="display-field"></div>
-          </div>
-          <div class="form-field">
-            <label>手数料</label>
-            <div id="exitFeeDisp" class="display-field"></div>
-          </div>
-          <div class="form-field">
-            <label for="highDuringTrade">期間中高値</label>
-            <input id="highDuringTrade" type="number" inputmode="decimal">
-          </div>
-          <div class="form-field">
-            <label for="lowDuringTrade">期間中安値</label>
-            <input id="lowDuringTrade" type="number" inputmode="decimal">
-          </div>
-          <div class="form-field">
-            <label for="resultMemo">結果メモ</label>
-            <textarea id="resultMemo" rows="3"></textarea>
-          </div>
-          <div class="form-field">
-            <label>損益</label>
-            <div id="exitProfitDisp" class="display-field"></div>
-          </div>
-          <div class="exit-actions">
-            <button id="btnSaveExit">結果を保存</button>
-            <button id="btnClearExit">この結果入力をクリア</button>
-          </div>
-        </div>
-      </div>
-    </section>
+        </form>
+      </section>
 
     <!-- Stats Tab Content -->
     <section id="tab-stats" class="tab-content">
