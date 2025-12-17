@@ -329,95 +329,103 @@
       </section>
 
     <!-- Stats Tab Content -->
-    <section id="tab-stats" class="tab-content">
-      <div class="stats-container">
-        <div class="card stats-filters">
-          <h3>フィルタ</h3>
-          <div class="form-field">
-            <label for="filterSymbol">銘柄</label>
-            <select id="filterSymbol">
+    <section id="stats-tab" class="tab-content">
+      <div class="stats-filters">
+        <h3>フィルタ</h3>
+        <div class="filter-grid">
+          <label>
+            銘柄
+            <select id="filter-symbol">
               <option value="all">全て</option>
-              <option value="nk225mc">nk225mc</option>
-              <option value="nk225m">nk225m</option>
-              <option value="nk225">nk225</option>
+              <option value="nk225mc">NK225マイクロ</option>
+              <option value="nk225m">NK225ミニ</option>
+              <option value="nk225">NK225</option>
             </select>
-          </div>
-          <div class="form-field">
-            <label for="filterType">種別</label>
-            <select id="filterType">
+          </label>
+          <label>
+            時間足
+            <select id="filter-timeframe">
               <option value="all">全て</option>
-              <option value="real">real</option>
-              <option value="virtual">virtual</option>
-              <option value="practice">practice</option>
+              <option value="1分">1分</option>
+              <option value="5分">5分</option>
+              <option value="15分">15分</option>
+              <option value="30分">30分</option>
+              <option value="1時間">1時間</option>
+              <option value="4時間">4時間</option>
+              <option value="日足">日足</option>
             </select>
-          </div>
-          <div class="form-field">
-            <label for="filterDirection">方向</label>
-            <select id="filterDirection">
+          </label>
+          <label>
+            トレード区分
+            <select id="filter-tradeType">
+              <option value="all">全て</option>
+              <option value="real">リアル</option>
+              <option value="virtual">バーチャル</option>
+              <option value="practice">プラクティス</option>
+            </select>
+          </label>
+          <label>
+            取引方向
+            <select id="filter-direction">
               <option value="all">全て</option>
               <option value="long">ロング</option>
               <option value="short">ショート</option>
               <option value="flat">ノーポジ</option>
             </select>
-          </div>
-          <div class="form-field">
-            <label for="filterResult">結果</label>
-            <select id="filterResult">
+          </label>
+          <label>
+            結果
+            <select id="filter-direction">
               <option value="all">全て</option>
               <option value="with">結果あり</option>
               <option value="without">結果なし</option>
             </select>
-          </div>
-          <div class="form-field">
-            <label for="filterStart">開始日</label>
-            <input id="filterStart" type="date">
-          </div>
-          <div class="form-field">
-            <label for="filterEnd">終了日</label>
-            <input id="filterEnd" type="date">
-          </div>
-          <div class="button-row filter-buttons">
-            <button type="button" id="btn-apply-filter">フィルタ適用</button>
-            <button type="button" id="btn-clear-filter">フィルタ解除</button>
-            <button type="button" id="btn-export-json">JSONエクスポート</button>
-            <button type="button" id="btnExportCsv" class="btn">CSVエクスポート</button>
-            <label class="import-label">
-              JSONインポート
-              <input type="file" id="import-file" accept="application/json" hidden>
-              <button type="button" id="btn-import-json">JSONインポート</button>
-            </label>
-          </div>
-          <div id="import-result" class="import-result"></div>
+          </label>
+          <label>
+            期間（開始）
+            <input type="date" id="filter-start">
+          </label>
+          <label>
+            期間（終了）
+            <input type="date" id="filter-end">
+          </label>
         </div>
-        <div class="card stats-summary">
-          <h2>分析結果</h2>
-          <div id="statsSummaryTable"></div>
+        <div class="button-row filter-buttons">
+          <button type="button" id="btn-apply-filter">フィルタ適用</button>
+          <button type="button" id="btn-clear-filter">フィルタ解除</button>
+          <button type="button" id="btn-export-json">JSONエクスポート</button>
+          <button type="button" id="btnExportCsv" class="btn">CSVエクスポート</button>
+          <label class="import-label">
+            JSONインポート
+            <input type="file" id="import-file" accept="application/json" hidden>
+            <button type="button" id="btn-import-json">JSONインポート</button>
+          </label>
         </div>
         <div class="stats-summary" id="stats-summary"></div>
         <div class="table-wrap">
-            <table id="stats-table">
-                <thead>
-                    <tr>
-                        <th>作成日</th>
-                        <th>銘柄</th>
-                        <th>時間足</th>
-                        <th>方向</th>
-                        <th>エントリー価格</th>
-                        <th>決済価格</th>
-                        <th>枚数</th>
-                        <th>手数料/枚</th>
-                        <th>利益</th>
-                        <th>疑似ケース</th>
-                        <th>勝率</th>
-                        <th>推定値幅</th>
-                        <th>操作</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Table rows generated via JS -->
-                </tbody>
-            </table>
-        </div>
+          <table id="stats-table">
+                    <thead>
+                        <tr>
+                            <th>作成日</th>
+                            <th>銘柄</th>
+                            <th>時間足</th>
+                            <th>方向</th>
+                            <th>エントリー価格</th>
+                            <th>決済価格</th>
+                            <th>枚数</th>
+                            <th>手数料/枚</th>
+                            <th>利益</th>
+                            <th>疑似ケース</th>
+                            <th>勝率</th>
+                            <th>推定値幅</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Table rows generated via JS -->
+                    </tbody>
+                </table>
+            </div>
         <div class="card stats-charts">
           <h2>グラフ</h2>
           <canvas id="chartCumulative" height="200"></canvas>
@@ -428,9 +436,11 @@
           <h2>トレード一覧</h2>
           <div id="recordsTableWrapper"></div>
         </div>
-      </div>
-    </section>
-  </div>
+        <div class="chart-wrap">
+          <canvas id="stats-chart" height="200"></canvas>
+        </div>
+      </section>
+    </div>
   <footer class="app-footer">
     <p>本アプリの判定結果・分析結果は参考情報であり、将来の損益を保証しません。投資判断は自己責任で行ってください。本アプリの利用により生じたいかなる損失についても責任を負いません。</p>
   </footer>
