@@ -350,19 +350,47 @@
             <label for="filterEnd">終了日</label>
             <input id="filterEnd" type="date">
           </div>
-          <div class="filter-actions">
-            <button id="btnApplyFilters">適用</button>
-            <button id="btnResetFilters">フィルタ解除</button>
-            <button id="btnExportJSON">エクスポート</button>
+          <div class="button-row filter-buttons">
+            <button type="button" id="btn-apply-filter">フィルタ適用</button>
+            <button type="button" id="btn-clear-filter">フィルタ解除</button>
+            <button type="button" id="btn-export-json">JSONエクスポート</button>
+            <button type="button" id="btnExportCsv" class="btn">CSVエクスポート</button>
             <label class="import-label">
-              インポート
-              <input id="importJsonInput" type="file" accept="application/json" style="display:none">
+              JSONインポート
+              <input type="file" id="import-file" accept="application/json" hidden>
+              <button type="button" id="btn-import-json">JSONインポート</button>
             </label>
           </div>
+          <div id="import-result" class="import-result"></div>
         </div>
         <div class="card stats-summary">
           <h2>分析結果</h2>
           <div id="statsSummaryTable"></div>
+        </div>
+        <div class="stats-summary" id="stats-summary"></div>
+        <div class="table-wrap">
+            <table id="stats-table">
+                <thead>
+                    <tr>
+                        <th>作成日</th>
+                        <th>銘柄</th>
+                        <th>時間足</th>
+                        <th>方向</th>
+                        <th>エントリー価格</th>
+                        <th>決済価格</th>
+                        <th>枚数</th>
+                        <th>手数料/枚</th>
+                        <th>利益</th>
+                        <th>疑似ケース</th>
+                        <th>勝率</th>
+                        <th>推定値幅</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Table rows generated via JS -->
+                </tbody>
+            </table>
         </div>
         <div class="card stats-charts">
           <h2>グラフ</h2>
