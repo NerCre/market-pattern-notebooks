@@ -22,7 +22,7 @@
       <button class="tab-button" data-tab="stats">📊 Stats</button>
     </nav>
     <!-- Entry Tab Content -->
-   <section id="entry-tab" class="tab-content active">
+    <section id="entry-tab" class="tab-content active">
       <form id="entry-form" class="form-section">
         <!-- Error message placeholder -->
         <div id="entry-error" class="error-message" aria-live="assertive"></div>
@@ -31,16 +31,21 @@
           <div class="form-column">
           <h3>基本情報</h3>
           <label>
+            エントリー日時
+            <input type="datetime-local" id="entry-datetime" required>
+            <input id="datetimeEntry" name="datetimeEntry" type="datetime-local" required>
+          </label>
+          <label>
             銘柄
             <select name="symbol" id="entry-symbol">
               <option value="nk225mc">NK225マイクロ</option>
               <option value="nk225m">NK225ミニ</option>
               <option value="nk225">NK225</option>
-            </select>
-            <div class="form-field">
-              <label for="datetimeEntry">エントリー日時<span class="required">*</span></label>
-              <input id="datetimeEntry" name="datetimeEntry" type="datetime-local" required>
-            </div>
+          </label>
+          <div class="form-field">
+            <label for="datetimeEntry">エントリー日時<span class="required">*</span></label>
+            <input id="datetimeEntry" name="datetimeEntry" type="datetime-local" required>
+          </div>
           <div class="form-field">
             <label for="symbol">銘柄</label>
             <select id="symbol">
