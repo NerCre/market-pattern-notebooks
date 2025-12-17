@@ -30,10 +30,17 @@
           <!-- Column 1: basic trade info -->
           <div class="form-column">
           <h3>基本情報</h3>
-          <div class="form-field">
-            <label for="datetimeEntry">エントリー日時<span class="required">*</span></label>
-            <input id="datetimeEntry" name="datetimeEntry" type="datetime-local" required>
-          </div>
+          <label>
+            銘柄
+            <select name="symbol" id="entry-symbol">
+              <option value="nk225mc">NK225マイクロ</option>
+              <option value="nk225m">NK225ミニ</option>
+              <option value="nk225">NK225</option>
+            </select>
+            <div class="form-field">
+              <label for="datetimeEntry">エントリー日時<span class="required">*</span></label>
+              <input id="datetimeEntry" name="datetimeEntry" type="datetime-local" required>
+            </div>
           <div class="form-field">
             <label for="symbol">銘柄</label>
             <select id="symbol">
